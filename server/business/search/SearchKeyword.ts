@@ -17,6 +17,8 @@ export interface ISearchKeyword extends IModel {
 
   bodyMatch: string[]
 
+  bodyMatchExclude: string[]
+
   addressMatch: string[]
 
   kijijiSearchStr: string
@@ -43,6 +45,8 @@ export abstract class SearchKeyword implements ISearchKeyword {
   private LAST_MATCH?: Date = null
   @Editable()
   bodyMatch = []
+  @Editable()
+  bodyMatchExclude = []
   @Editable()
   addressMatch = []
   @Editable()
