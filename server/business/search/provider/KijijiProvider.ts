@@ -45,6 +45,9 @@ export class KijijiProvider implements IProvider<IKijijiSearch> {
         ads = ads.filter((ad: IAd) => {
           return !Str.containsOne(ad.description, search.bodyMatchExclude)
         })
+        ads = ads.filter((ad: IAd) => {
+          return !Str.containsOne(ad.title, search.bodyMatchExclude)
+        })
       }
       if (search.addressMatch.length > 0) {
         ads = ads.filter((ad: IAd) => {
