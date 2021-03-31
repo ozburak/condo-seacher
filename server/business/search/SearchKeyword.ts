@@ -23,6 +23,10 @@ export interface ISearchKeyword extends IModel {
 
   kijijiSearchStr: string
 
+  availableDateAfter: string
+
+  dishWasher: boolean
+
   readonly provider: IProvider<ISearchKeyword>
 
   readonly service: ISearchService
@@ -37,7 +41,6 @@ export interface ISearchKeyword extends IModel {
 
 export abstract class SearchKeyword implements ISearchKeyword {
   readonly key: string
-  readonly kijijiSearchStr: string
   @Type(() => Date)
   readonly createdAt: Date = new Date()
   @Type(() => Date)
@@ -48,10 +51,15 @@ export abstract class SearchKeyword implements ISearchKeyword {
   @Editable()
   bodyMatchExclude = []
   @Editable()
+  kijijiSearchStr = null
+  @Editable()
+  availableDateAfter = ""
+  @Editable()
+  dishWasher = false
+  @Editable()
   addressMatch = []
   @Editable()
   cronRule = null
-
   @Editable((value: number) => value > 0 ? value : null)
   maxPrice: number | null
   @Editable((value: number) => value > 0 ? value : null)

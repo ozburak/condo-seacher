@@ -54,6 +54,17 @@ export class KijijiProvider implements IProvider<IKijijiSearch> {
           return Str.containsOne(ad.attributes.location, search.addressMatch)
         })
       }
+      if (search.availableDateAfter) {
+        var filterDate = new Date(search.availableDateAfter)
+        ads = ads.filter((ad: IAd) => {
+          return (filterDate<ad.attributes.dateavailable)
+        })
+      }
+      if (search.dishWasher) {
+        ads = ads.filter((ad: IAd) => {
+          return (ad.attributes.dishwasher)
+        })
+      }
       L.info(ads)
     } catch (error) {
       L.error(error, 'Problem with Kijiji')
